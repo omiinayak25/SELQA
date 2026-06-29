@@ -30,6 +30,8 @@ reports/
 screenshots/
 videos/
 logs/
+visual-output/
+cucumber-report.html
 *.log
 
 # ===== OS =====
