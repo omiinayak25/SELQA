@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "project": {
+    "name": "OmiinQA",
+    "subtitle": "Enterprise Selenium + Java Automation Framework",
+    "repositoryName": "omiinqa-selenium-framework",
+    "groupId": "com.omiinqa",
+    "artifactId": "omiinqa-selenium-framework",
+    "version": "1.0.0-SNAPSHOT",
+    "license": "MIT",
+    "repository": "https://github.com/omiinayak25/SELQA",
+    "description": "Production-grade enterprise test automation framework covering UI, API, Database, E2E, BDD, Accessibility, Visual, Performance and Security testing with parallel, cross-browser, Grid and Docker execution."
+  },
+  "toolchain": {
+    "language": "Java",
+    "javaVersion": "21",
+    "javaDistribution": "Eclipse Temurin 21.0.11 LTS",
+    "build": "Maven",
+    "mavenVersion": "3.9.9"
+  },
+  "git": {
+    "branch": "main",
+    "commit": "0aac3f8a289429b832d1d733f009f801dc9fcb6a",
+    "commitShort": "0aac3f8",
+    "commitDate": "2026-06-29T11:29:41+05:30",
+    "author": "omiinayak25 <nayakawadiomkar258@gmail.com>",
+    "trackedFiles": 176
+  },
+  "metrics": {
+    "sourceFilesMain": 109,
+    "sourceFilesTest": 19,
+    "linesOfCodeMain": 10482,
+    "linesOfCodeTest": 2169,
+    "testMethods": 108,
+    "bddFeatureFiles": 2,
+    "bddScenarios": 5,
+    "testngSuites": 8,
+    "testDataFiles": 6,
+    "jsonSchemas": 3,
+    "declaredDependencies": 39
+  },
+  "modules": {
+    "config": 2,
+    "constants": 1,
+    "enums": 3,
+    "exceptions": 6,
+    "driver": 8,
+    "core": 3,
+    "utils": 9,
+    "pages": 9,
+    "components": 9,
+    "businessflows": 3,
+    "api": 28,
+    "database": 12,
+    "data": 11,
+    "reports": 2,
+    "listeners": 3
+  },
+  "testLayers": {
+    "unit":     { "files": 2, "tests": 9,  "suite": "testng-smoke.xml",    "requires": "offline" },
+    "api":      { "files": 5, "tests": 56, "suite": "testng-api.xml",      "requires": "network" },
+    "ui":       { "files": 2, "tests": 6,  "suite": "testng-ui.xml",       "requires": "browser-or-grid" },
+    "e2e":      { "files": 1, "tests": 1,  "suite": "testng-e2e.xml",      "requires": "browser-and-network" },
+    "database": { "files": 4, "tests": 36, "suite": "testng-database.xml", "requires": "live-database" },
+    "bdd":      { "files": 5, "tests": 0,  "suite": "testng-bdd.xml",      "requires": "browser-or-grid", "scenarios": 5 }
+  },
+  "designPatterns": [
+    "Singleton", "Factory", "Strategy", "Builder", "Repository",
+    "Facade", "TemplateMethod", "Adapter", "Decorator", "Command"
+  ],
+  "capabilities": [
+    "UI", "API", "Database", "E2E", "BDD", "CrossBrowser", "Parallel",
+    "DataDriven", "Accessibility", "Visual", "Performance", "Security",
+    "SeleniumGrid", "Docker", "CI/CD", "Reporting", "Logging"
+  ],
+  "applicationsUnderTest": {
+    "ui": ["SauceDemo", "OrangeHRM"],
+    "api": ["Restful-Booker", "ReqRes", "DummyJSON", "Swagger Petstore", "JSONPlaceholder", "httpbin", "GraphQL Countries"]
+  },
+  "stack": {
+    "automation": ["Selenium 4.27", "TestNG 7.10", "WebDriverManager 5.9"],
+    "api": ["REST Assured 5.5"],
+    "bdd": ["Cucumber 7.20"],
+    "data": ["Jackson 2.18", "Apache POI 5.3", "OpenCSV 5.9", "datafaker 2.4"],
+    "database": ["PostgreSQL 42.7", "MySQL 9.1", "HikariCP 6.2"],
+    "logging": ["Log4j2 2.24", "SLF4J 2.0"],
+    "reporting": ["Allure 2.29", "Extent 5.1"],
+    "infra": ["Docker", "Selenium Grid 4", "GitHub Actions", "Jenkins", "Azure DevOps"],
+    "quality": ["Checkstyle", "PMD", "SpotBugs", "JaCoCo", "OWASP Dependency-Check", "Maven Enforcer"]
+  },
+  "ciProviders": ["GitHub Actions", "Jenkins", "Azure DevOps"],
+  "verification": {
+    "compile": { "command": "mvn clean test-compile", "result": "SUCCESS" },
+    "smoke":   { "command": "mvn test -Dsuite.file=testng-smoke.xml", "result": "9/9 passing", "offline": true }
+  },
+  "entryPoints": {
+    "build": "mvn clean test-compile",
+    "smokeOffline": "mvn test -Dsuite.file=testng-smoke.xml",
+    "suitesDir": "src/test/resources/suites",
+    "config": "src/main/resources/config",
+    "logging": "src/main/resources/log4j2.xml"
+  },
+  "generatedAt": "2026-06-29"
+}
