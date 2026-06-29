@@ -39,6 +39,12 @@ jobs:
       - name: Embedded DB integration (H2, zero-infra)
         run: mvn -B test -Dsuite.file=testng-db-embedded.xml
 
+      - name: BDD reference-domain (2,561 scenarios, offline)
+        run: mvn -B test -Dtest=CucumberTestRunner -Dcucumber.filter.tags='@domain'
+
+      - name: BDD step binding (dry-run, all 2,712 scenarios)
+        run: mvn -B test -Dtest=CucumberTestRunner -Dcucumber.execution.dry-run=true
+
       - name: Upload Allure results
         if: always()
         uses: actions/upload-artifact@v4

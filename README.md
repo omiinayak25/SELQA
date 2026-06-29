@@ -24,8 +24,8 @@
 > and Docker execution, full CI/CD, and rich reporting.
 
 <p align="center">
-  <b>1,150+ meaningful scenarios</b> · 1,004 TestNG <code>@Test</code> · 151 executable BDD scenarios ·
-  24 modules · 7 API apps · 3 UI apps · cloud + observability + AI-healing + resilience
+  <b>3,700+ meaningful scenarios</b> · 1,004 TestNG <code>@Test</code> · <b>2,700+ BDD scenarios</b>
+  (2,561 offline-executable) · ~15.6% Gherkin · 67 feature files · 24+ modules · 7 API apps · 3 UI apps
 </p>
 
 ---
@@ -61,7 +61,7 @@ is documented and justified — this repo doubles as a teaching and interview re
 | **API** | REST Assured client, request builder, auth strategies (Basic/Bearer/API-key), schema validation, request chaining |
 | **Database** | JDBC + HikariCP pool, repository pattern, transactions/rollback, fluent DB assertions (PostgreSQL & MySQL) |
 | **E2E** | UI + API + DB orchestrated journeys |
-| **BDD** | Cucumber 7, business-readable Gherkin, reusable steps, hooks |
+| **BDD** | Cucumber 7 — 67 feature files, **2,700+ scenarios**. Two executable kinds: `@ui` (real browser) and `@domain` (2,561 offline scenarios against a real in-memory business domain — no fakes). See [BDD Guide](docs/BDD_GUIDE.md) |
 | **Cross-browser** | Chrome, Firefox, Edge — local, headless, remote, Grid |
 | **Parallel** | ThreadLocal driver, TestNG `parallel="methods"` |
 | **Data-driven** | JSON, CSV, Excel (POI), YAML, Properties, datafaker, builders & factories |
@@ -138,7 +138,9 @@ mvn -B test -Dsuite.file=testng-smoke.xml   # offline core smoke (no browser nee
 | UI (local Chrome, headless) | `mvn test -Dsuite.file=testng-ui.xml -Dbrowser=chrome -Dheadless=true` |
 | UI (headed Firefox) | `mvn test -Dsuite.file=testng-ui.xml -Dbrowser=firefox -Dheadless=false` |
 | Full regression | `mvn test -Dsuite.file=testng-regression.xml` |
-| BDD (Cucumber) | `mvn test -Dtest=CucumberTestRunner` |
+| BDD — offline domain (2,561 scenarios, no browser) | `mvn test -Dtest=CucumberTestRunner -Dcucumber.filter.tags='@domain'` |
+| BDD — UI (needs browser/Grid) | `mvn test -Dtest=CucumberTestRunner -Dcucumber.filter.tags='@ui'` |
+| BDD — validate all steps bind (offline) | `mvn test -Dtest=CucumberTestRunner -Dcucumber.execution.dry-run=true` |
 | Pick environment | add `-Denv=qa|staging|dev` |
 
 **Config precedence:** `-Dkey=value` (CLI) → `config/env/<env>.properties` → `config/config.properties`.
@@ -186,7 +188,7 @@ guards dependency hygiene. Day-to-day builds stay green; gates are enforced in C
 [Folder Structure](docs/FOLDER_STRUCTURE.md) · [Framework Flow](docs/FRAMEWORK_FLOW.md) ·
 [ADRs](docs/adr/README.md) · [Feature Matrix](docs/FEATURE_MATRIX.md) · [Technology Matrix](docs/TECHNOLOGY_MATRIX.md)
 
-**Guides:** [Developer](docs/DEVELOPER_GUIDE.md) · [Execution](docs/EXECUTION_GUIDE.md) ·
+**Guides:** [Developer](docs/DEVELOPER_GUIDE.md) · [Execution](docs/EXECUTION_GUIDE.md) · [BDD](docs/BDD_GUIDE.md) ·
 [Cloud](docs/CLOUD_GUIDE.md) · [Best Practices](docs/BEST_PRACTICES.md) ·
 [Troubleshooting](docs/TROUBLESHOOTING.md) · [FAQ](docs/FAQ.md) · [Interview](docs/INTERVIEW_GUIDE.md)
 

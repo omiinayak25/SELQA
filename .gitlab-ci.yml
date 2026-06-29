@@ -26,6 +26,7 @@ build:
     - mvn $MAVEN_CLI_OPTS clean test-compile
     - mvn $MAVEN_CLI_OPTS test -Dsuite.file=testng-smoke.xml
     - mvn $MAVEN_CLI_OPTS test -Dsuite.file=testng-db-embedded.xml
+    - mvn $MAVEN_CLI_OPTS test -Dtest=CucumberTestRunner -Dcucumber.filter.tags='@domain'
   artifacts:
     when: always
     reports:

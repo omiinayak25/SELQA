@@ -5,6 +5,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/); versioning is [S
 
 ## [Unreleased]
 
+### Added — v2.2 BDD reference-domain expansion (~15% Gherkin)
+- **Executable reference domain.** A real in-memory business core under
+  `com.omiinqa.reference.*` (42 services: identity, access/RBAC, catalog, commerce, orders,
+  platform, files, security) with genuine validation, business rules and stable error codes.
+- **2,561 offline-executable `@domain` BDD scenarios** (2,712 total BDD across 67 feature files)
+  that run real domain logic with real assertions — **no browser, no fakes**. Plus `@db`
+  scenarios running real SQL on the embedded H2, and `@i18n` over six real locale bundles
+  (incl. Arabic RTL).
+- **Tag-conditional Cucumber hooks**: a browser starts only for `@ui`/`@e2e`; `@domain`/`@api`
+  scenarios run offline. Shared `DomainWorld` + `CommonDomainSteps` (outcome assertions defined
+  once → zero duplicate/ambiguous steps across 35 domain step classes).
+- Gherkin grew from 1.5% → **15.63%** of the codebase (GitHub Linguist target met) while every
+  scenario remains genuinely executable. Dry-run: 2,712 scenarios, 0 undefined/0 ambiguous.
+- Docs: [BDD_GUIDE.md](docs/BDD_GUIDE.md), internal BDD domain contract.
+
 ### Added — v2.1 Enterprise capability expansion (production-readiness pass)
 - **Cloud:** BrowserStack / Sauce Labs / LambdaTest capability strategies + `CloudDriverProvider`.
 - **Observability:** correlation IDs (MDC), execution timeline, metric registry, Prometheus

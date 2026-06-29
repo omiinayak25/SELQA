@@ -10,8 +10,22 @@ mvn test -Dsuite.file=testng-smoke.xml                   # offline core smoke
 mvn test -Dsuite.file=testng-api.xml                     # API (network)
 mvn test -Dsuite.file=testng-ui.xml -Dbrowser=chrome     # UI local
 mvn test -Dsuite.file=testng-regression.xml              # full regression
-mvn test -Dtest=CucumberTestRunner                       # BDD
+mvn test -Dtest=CucumberTestRunner                       # BDD (all features)
 mvn test -Dsuite.file=testng-database.xml                # DB (needs live DB)
+```
+
+### BDD (Cucumber) — see [BDD Guide](BDD_GUIDE.md)
+```bash
+# 2,561 reference-domain scenarios — fully offline, no browser, no network
+mvn test -Dtest=CucumberTestRunner -Dcucumber.filter.tags='@domain'
+# A single context
+mvn test -Dtest=CucumberTestRunner -Dcucumber.filter.tags='@domain and @orders'
+mvn test -Dtest=CucumberTestRunner -Dcucumber.filter.tags='@domain and @db'   # real SQL on H2
+# UI BDD (browser/Grid) · API BDD (network)
+mvn test -Dtest=CucumberTestRunner -Dcucumber.filter.tags='@ui'
+mvn test -Dtest=CucumberTestRunner -Dcucumber.filter.tags='@api'
+# Validate every step binds — 2,712 scenarios, 0 undefined/ambiguous (offline)
+mvn test -Dtest=CucumberTestRunner -Dcucumber.execution.dry-run=true
 ```
 
 ## Runtime switches (all `-D…`)
