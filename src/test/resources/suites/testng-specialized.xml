@@ -1,28 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <!--
-  Full regression. Runs the 'regression' group across every layer.
-  DB-dependent tests are tagged 'database' and excluded here by default.
+  Specialized quality layers: accessibility (axe), performance smoke (navigation
+  timing), visual regression (baseline diff), security (injection/session) and
+  responsive (viewport matrix). Requires a browser / Grid. Each lens asserts a
+  different property of the same pages.
 -->
-<suite name="OmiinQA-Regression" parallel="methods" thread-count="4" verbose="1">
+<suite name="OmiinQA-Specialized" parallel="methods" thread-count="3" verbose="1">
     <listeners>
         <listener class-name="com.omiinqa.listeners.RetryTransformer"/>
         <listener class-name="com.omiinqa.listeners.TestListener"/>
         <listener class-name="com.omiinqa.reports.ExtentReportListener"/>
     </listeners>
-    <test name="Regression">
-        <groups>
-            <run>
-                <include name="regression"/>
-                <include name="smoke"/>
-                <exclude name="database"/>
-            </run>
-        </groups>
+    <test name="Specialized-Layers">
         <packages>
-            <package name="com.omiinqa.unit"/>
-            <package name="com.omiinqa.api.*"/>
-            <package name="com.omiinqa.ui.*"/>
-            <package name="com.omiinqa.e2e"/>
             <package name="com.omiinqa.accessibility"/>
             <package name="com.omiinqa.performance"/>
             <package name="com.omiinqa.visual"/>

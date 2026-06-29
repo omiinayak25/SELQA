@@ -14,7 +14,7 @@
             <run><include name="database"/></run>
         </groups>
         <packages>
-            <package name="com.omiinqa.database"/>
+            <package name="com.omiinqa.database.*"/>
         </packages>
     </test>
 </suite>

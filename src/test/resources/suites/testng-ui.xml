@@ -12,7 +12,7 @@
     </listeners>
     <test name="UI-Tests">
         <packages>
-            <package name="com.omiinqa.ui"/>
+            <package name="com.omiinqa.ui.*"/>
         </packages>
     </test>
 </suite>

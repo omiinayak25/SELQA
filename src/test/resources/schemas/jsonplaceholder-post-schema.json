@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JSONPlaceholder Post",
+  "description": "JSON Schema for a single post object from GET /posts/{id}",
+  "type": "object",
+  "required": ["id", "userId", "title", "body"],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Server-assigned post identifier",
+      "minimum": 1
+    },
+    "userId": {
+      "type": "integer",
+      "description": "Foreign key to owning user",
+      "minimum": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Post headline"
+    },
+    "body": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Full post text"
+    }
+  },
+  "additionalProperties": false
+}

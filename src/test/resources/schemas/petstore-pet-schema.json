@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Petstore Pet Response",
+  "description": "JSON Schema (Draft-07) for GET /pet/{petId} from the Swagger Petstore v2 API",
+  "type": "object",
+  "required": ["id", "name", "photoUrls", "status"],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Numeric pet identifier assigned by the server",
+      "minimum": 0
+    },
+    "category": {
+      "type": "object",
+      "description": "Optional grouping category for the pet",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the pet",
+      "minLength": 1
+    },
+    "photoUrls": {
+      "type": "array",
+      "description": "One or more photo URLs associated with the pet",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Zero or more descriptive tags",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "status": {
+      "type": "string",
+      "description": "Availability status of the pet",
+      "enum": ["available", "pending", "sold"]
+    }
+  },
+  "additionalProperties": false
+}

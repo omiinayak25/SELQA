@@ -14,14 +14,14 @@
 
     <test name="Chrome">
         <parameter name="browser" value="chrome"/>
-        <packages><package name="com.omiinqa.ui"/></packages>
+        <packages><package name="com.omiinqa.ui.*"/></packages>
     </test>
     <test name="Firefox">
         <parameter name="browser" value="firefox"/>
-        <packages><package name="com.omiinqa.ui"/></packages>
+        <packages><package name="com.omiinqa.ui.*"/></packages>
     </test>
     <test name="Edge">
         <parameter name="browser" value="edge"/>
-        <packages><package name="com.omiinqa.ui"/></packages>
+        <packages><package name="com.omiinqa.ui.*"/></packages>
     </test>
 </suite>

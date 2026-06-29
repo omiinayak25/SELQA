@@ -9,7 +9,7 @@
     </listeners>
     <test name="API-Tests">
         <packages>
-            <package name="com.omiinqa.api"/>
+            <package name="com.omiinqa.api.*"/>
         </packages>
     </test>
 </suite>
