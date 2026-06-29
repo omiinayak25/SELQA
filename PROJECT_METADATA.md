@@ -1,10 +1,12 @@
 # OmiinQA — Project Metadata
 
-> Generated from the repository at commit `0ad0aae` (2026-06-29). Machine-readable
+> Generated from the repository at commit `847cb84` (2026-06-29). Machine-readable
 > companion: [`project-metadata.json`](project-metadata.json).
 >
-> **v2.0 coverage:** 558 `@Test` + 151 executable BDD scenarios = **665+ meaningful scenarios**
-> across 170 main + 78 test sources (≈18.2k main / 15.1k test LOC).
+> **v2.1 coverage:** 1,004 `@Test` + 151 executable BDD scenarios = **1,150+ meaningful
+> scenarios** across 227 main + 112 test sources (≈28.2k main / 21.4k test LOC), 24 modules.
+> Enterprise modules: cloud, observability, reporting-exporters, API protocols (SOAP/WS/SSE/
+> OAuth2), intelligence (self-healing/AI), i18n, resilience/chaos, synthetic data.
 
 ## Identity
 | Field | Value |

@@ -5,6 +5,28 @@ Format follows [Keep a Changelog](https://keepachangelog.com/); versioning is [S
 
 ## [Unreleased]
 
+### Added — v2.1 Enterprise capability expansion (production-readiness pass)
+- **Cloud:** BrowserStack / Sauce Labs / LambdaTest capability strategies + `CloudDriverProvider`.
+- **Observability:** correlation IDs (MDC), execution timeline, metric registry, Prometheus
+  exposition exporter, OpenTelemetry-shaped tracer/spans (zero deps).
+- **Reporting exporters:** JSON/CSV/XML/Markdown + GitHub Step Summary / Slack / Teams / Email,
+  plus a results aggregator and facade.
+- **API protocols:** SOAP, WebSocket, SSE, multipart upload, OAuth2 (client-credentials/password
+  + token cache) — all on JDK `java.net.http`, zero new dependencies.
+- **Intelligence:** self-healing `SmartLocator`, locator suggester, failure categorizer, flaky
+  detector, and an optional credentialed `AiAssistant` hook (heuristic-first, no fake AI).
+- **i18n:** locale manager, resource bundles (en/es/fr), localization validator, text direction.
+- **Resilience:** retry policy, circuit breaker, bulkhead, deterministic chaos injector.
+- **Data:** synthetic generator + PII masker + unique pool + relational dataset; XXE-hardened
+  XML reader.
+- **DevOps/security:** LICENSE (MIT), issue/PR templates, CODEOWNERS, dependabot, FUNDING,
+  CODE_OF_CONDUCT, SUPPORT; CodeQL (SAST), gitleaks secret scan, OWASP + CycloneDX SBOM,
+  release-drafter; `.gitlab-ci.yml`; PIT (mutation) + SBOM Maven profiles.
+- **Docs:** Mermaid diagrams, feature/technology matrices, ADRs, troubleshooting, FAQ, cloud &
+  best-practices guides, known-limitations.
+- **Totals:** 1,004 `@Test` + 151 executable BDD = **1,155+ scenarios** (from 665). +57 new
+  source files, +435 new offline tests (all green). CI build/smoke/embedded-DB remain green.
+
 ### Added — v2.0 Enterprise coverage expansion
 - **API breadth (+182):** JSONPlaceholder (69), httpbin (43), Petstore (42), GraphQL Countries (28)
   — services, models, schemas, all reusing `ApiClient`/`RequestBuilder`/`ResponseValidator`.

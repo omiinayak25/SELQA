@@ -24,8 +24,8 @@
 > and Docker execution, full CI/CD, and rich reporting.
 
 <p align="center">
-  <b>665+ meaningful scenarios</b> · 558 TestNG <code>@Test</code> · 151 executable BDD scenarios ·
-  7 API apps · 3 UI apps · 10 specialized layers
+  <b>1,150+ meaningful scenarios</b> · 1,004 TestNG <code>@Test</code> · 151 executable BDD scenarios ·
+  24 modules · 7 API apps · 3 UI apps · cloud + observability + AI-healing + resilience
 </p>
 
 ---

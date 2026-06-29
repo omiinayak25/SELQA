@@ -20,23 +20,36 @@
   },
   "git": {
     "branch": "main",
-    "commit": "0ad0aae",
-    "trackedFiles": 316
+    "commit": "847cb84",
+    "trackedFiles": 446
   },
   "metrics": {
-    "sourceFilesMain": 170,
-    "sourceFilesTest": 78,
-    "linesOfCodeMain": 18240,
-    "linesOfCodeTest": 15122,
-    "testMethods": 558,
+    "sourceFilesMain": 227,
+    "sourceFilesTest": 112,
+    "linesOfCodeMain": 28200,
+    "linesOfCodeTest": 21422,
+    "testMethods": 1004,
+    "topLevelPackages": 24,
     "bddFeatureFiles": 13,
     "bddScenariosDeclared": 107,
     "bddScenariosExecutable": 151,
-    "totalMeaningfulScenarios": 665,
-    "testngSuites": 9,
-    "testDataFiles": 6,
+    "totalMeaningfulScenarios": 1155,
+    "testngSuites": 11,
+    "docFiles": 25,
+    "ciWorkflows": 4,
+    "testDataFiles": 8,
     "jsonSchemas": 7,
-    "declaredDependencies": 39
+    "declaredDependencies": 40
+  },
+  "enterpriseModules": {
+    "cloud": "BrowserStack/SauceLabs/LambdaTest capability strategies + driver provider",
+    "observability": "correlationId, execution timeline, metrics, Prometheus exporter, OTel-shaped tracer",
+    "reports.export": "JSON/CSV/XML/Markdown/GitHub-Summary/Slack/Teams/Email exporters + facade",
+    "api.protocols": "SOAP, WebSocket, SSE, multipart, OAuth2 (zero new deps)",
+    "intelligence": "self-healing locators, locator suggester, failure categorizer, flaky detector, optional AI hook",
+    "i18n": "locale manager, resource bundles, localization validator, text direction",
+    "resilience": "retry, circuit breaker, bulkhead, chaos injector",
+    "data.synthetic": "synthetic generator, data masker, unique pool, relational dataset; XXE-safe XML reader"
   },
   "testLayers": {
     "unit":          { "tests": 9,   "suite": "testng-smoke.xml",       "requires": "offline" },
