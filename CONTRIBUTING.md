@@ -10,10 +10,17 @@ consistent and the build green.
 - New browsers/auth schemes/data sources are added as **new Strategy classes**, not `switch` edits.
 - Every public type gets Javadoc explaining its role (and pattern, where relevant).
 
-## Branching & commits
-- Branch from `main`: `feature/<area>-<short-desc>` or `fix/<area>-<short-desc>`.
-- Conventional commits: `feat:`, `fix:`, `docs:`, `test:`, `refactor:`, `chore:`.
+## Branching model
+The repository uses **two long-term branches**:
+- **`main`** — stable, production-ready. Protected; only updated via PRs from `dev` (or hotfixes).
+- **`dev`** — active development / integration branch. The default target for feature work.
+
+Workflow:
+- Branch from `dev`: `feature/<area>-<short-desc>` or `fix/<area>-<short-desc>`.
+- Open your PR against **`dev`**. Once `dev` is green and stable, it is merged into `main`.
+- Conventional commits: `feat:`, `fix:`, `docs:`, `test:`, `refactor:`, `chore:`, `build:`.
 - Keep PRs focused; update the relevant doc in the same PR (docs and code ship together).
+- Short-lived branches are deleted after merge; only `main` and `dev` are permanent.
 
 ## Before opening a PR
 ```bash
