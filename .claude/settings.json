@@ -26,7 +26,11 @@
       "Bash(git -C /home/ttpl-lnv14-017/Downloads/selQA diff --stat)",
       "Bash(git -C /home/ttpl-lnv14-017/Downloads/selQA log --oneline -5)",
       "Bash(awk 'NR>=215 && NR<=225' /home/ttpl-lnv14-017/Downloads/selQA/src/test/resources/features/domain/quality/validation-rules.feature)",
-      "Bash(python3)"
+      "Bash(python3)",
+      "Bash(mvn -B test -Dtest=CucumberTestRunner \"-Dcucumber.filter.tags=@domain and \\(@orders or @access\\)\" -DfailIfNoTests=false)",
+      "Bash(awk 'NR>=70 && NR<=90 { printf \"%d: %s\\\\n\", NR, $0 }' /home/ttpl-lnv14-017/Downloads/selQA/src/test/resources/features/domain/quality/charset-length-validation.feature)",
+      "Bash(mvn -B test -Dtest=CucumberTestRunner \"-Dcucumber.filter.tags=@domain and @platform and @email\" -DfailIfNoTests=false)",
+      "Bash(python3 -c \"print\\(74 + 101 + 107 + 46 + 87 + 56\\)\")"
     ]
   }
 }
