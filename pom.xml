@@ -86,7 +86,7 @@
         <allure-maven.version>2.15.2</allure-maven.version>
         <jacoco-plugin.version>0.8.12</jacoco-plugin.version>
         <checkstyle-plugin.version>3.6.0</checkstyle-plugin.version>
-        <checkstyle.version>10.21.0</checkstyle.version>
+        <checkstyle.version>13.7.0</checkstyle.version>
         <pmd-plugin.version>3.26.0</pmd-plugin.version>
         <spotbugs-plugin.version>4.8.6.6</spotbugs-plugin.version>
         <enforcer-plugin.version>3.5.0</enforcer-plugin.version>
