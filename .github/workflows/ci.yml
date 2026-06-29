@@ -36,6 +36,16 @@ jobs:
       - name: Smoke suite (offline core)
         run: mvn -B test -Dsuite.file=testng-smoke.xml
 
+      - name: Dump surefire forked-process diagnostics on failure
+        if: failure()
+        run: |
+          echo "===== dumpstream / dump files ====="
+          find target -name '*.dumpstream' -o -name '*.dump' 2>/dev/null | while read f; do echo "--- $f ---"; cat "$f"; done
+          echo "===== surefire-reports ====="
+          ls -R target/surefire-reports 2>/dev/null || true
+          echo "===== ExtentReportListener on classpath? ====="
+          ls -l target/classes/com/omiinqa/reports/ 2>/dev/null || true
+
       - name: Embedded DB integration (H2, zero-infra)
         run: mvn -B test -Dsuite.file=testng-db-embedded.xml
 
