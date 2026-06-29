@@ -17,7 +17,13 @@
       "Bash(grep \"\\\\.java$\")",
       "Bash(echo \"=== exit: $? \\(1=clean\\) ===\")",
       "Bash(xargs ls)",
-      "Bash(awk -F: '{sum+=$2} END{print sum}')"
+      "Bash(awk -F: '{sum+=$2} END{print sum}')",
+      "Bash(git merge *)",
+      "Bash(xargs cat -n)",
+      "Bash(python3 -c ' *)",
+      "Bash(git -C /home/ttpl-lnv14-017/Downloads/selQA diff --name-only)",
+      "Bash(git -C /home/ttpl-lnv14-017/Downloads/selQA show HEAD:src/main/java/com/omiinqa/reference/commerce/CartLine.java)",
+      "Bash(git -C /home/ttpl-lnv14-017/Downloads/selQA diff --stat)"
     ]
   }
 }

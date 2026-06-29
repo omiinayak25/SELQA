@@ -102,7 +102,9 @@ public class CartService {
         if (lines.containsKey(productId)) {
             lines.get(productId).setQuantity(totalAfterAdd);
         } else {
-            lines.put(productId, new CartLine(product, qty));
+            final CartLine line = new CartLine(product);
+            line.setQuantity(qty);
+            lines.put(productId, line);
         }
     }
 
