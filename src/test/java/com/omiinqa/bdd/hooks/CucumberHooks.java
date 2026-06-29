@@ -16,22 +16,34 @@ import java.io.ByteArrayInputStream;
 /**
  * Cucumber lifecycle hooks — the BDD analogue of {@code BaseTest}.
  *
- * <p>Starts a ThreadLocal driver before each scenario and always quits it
- * after, attaching a failure screenshot to Allure. Scenario context is cleared
- * on teardown so no state bleeds between scenarios.</p>
+ * <p><b>Tag-conditional driver lifecycle.</b> A real browser is started only for
+ * scenarios tagged {@code @ui} or {@code @e2e}. Domain-level scenarios (tagged
+ * {@code @domain}) and pure API/DB scenarios run with no browser at all, so the
+ * large reference-domain BDD suite executes fully offline (and in CI) without a
+ * Grid. This keeps every scenario genuinely executable — no fake UI steps.</p>
+ *
+ * <p>Logging/MDC and {@link ScenarioContext} cleanup run for <em>every</em>
+ * scenario so state never bleeds between them, regardless of layer.</p>
  */
 public class CucumberHooks {
 
     private static final Logger LOG = LoggerFactory.getLogger(CucumberHooks.class);
 
+    /** Tag expression selecting scenarios that genuinely need a real browser. */
+    private static final String UI_TAGS = "@ui or @e2e";
+
     @Before(order = 0)
-    public void startDriver(final Scenario scenario) {
+    public void beforeScenario(final Scenario scenario) {
         MDC.put("testName", scenario.getName());
         LOG.info("▶ SCENARIO START: {}", scenario.getName());
+    }
+
+    @Before(value = UI_TAGS, order = 10)
+    public void startDriver(final Scenario scenario) {
         DriverManager.startDriver();
     }
 
-    @After(order = 100)
+    @After(value = UI_TAGS, order = 100)
     public void quitDriver(final Scenario scenario) {
         try {
             if (scenario.isFailed() && DriverManager.hasDriver()) {
@@ -44,9 +56,14 @@ public class CucumberHooks {
             }
         } finally {
             DriverManager.quitDriver();
-            ScenarioContext.clear();
-            LOG.info("■ SCENARIO END: {} [{}]", scenario.getName(), scenario.getStatus());
-            MDC.remove("testName");
         }
+    }
+
+    /** Always-run cleanup for every scenario (UI, API, DB or domain). */
+    @After(order = 0)
+    public void afterScenario(final Scenario scenario) {
+        ScenarioContext.clear();
+        LOG.info("■ SCENARIO END: {} [{}]", scenario.getName(), scenario.getStatus());
+        MDC.remove("testName");
     }
 }
