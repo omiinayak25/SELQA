@@ -40,10 +40,13 @@ scenarios = 665+ meaningful, non-duplicate scenarios.**
 API-driven UI, multi-step shopping integrity, pure-API CRUD lifecycles, and API→UI→DB
 journeys (DB subset tagged `database`, excluded by default).
 
-## Database (88) — group `database`
+## Database (88 + 11 embedded) — groups `database` / `db-embedded`
 Repository CRUD (User/Product/Order/Audit), parameterized-query safety, transactions
 (commit/rollback/isolation), data integrity & constraints, cross-validation, aggregation
 (COUNT/SUM/AVG/GROUP BY). DDL in `src/test/resources/db/schema.sql`.
+- `database` (88): require a live PostgreSQL/MySQL — excluded from default runs.
+- **`db-embedded` (11): `EmbeddedDbIntegrationTest` runs the real stack against in-memory H2
+  (PostgreSQL-compat) — zero external infra, verified 11/11 green** (`testng-db-embedded.xml`).
 
 ## Specialized layers (16)
 Accessibility (axe WCAG 2.1 AA budgets), Performance (navigation-timing budgets), Visual

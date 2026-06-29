@@ -63,5 +63,16 @@ Triage observed during live runs:
   is correct per the GraphQL spec — the asserted contract is the `errors` array, not the status.
 
 ## Database tests
-Provision PostgreSQL/MySQL with `users` and `products` tables, set credentials via
-`-Ddb.postgres.user=… -Ddb.postgres.password=…` (or env/secrets), then run the database suite.
+Two ways to exercise the database layer:
+
+1. **Embedded (zero-infra, runs in CI):** an in-memory H2 in PostgreSQL-compat mode boots the
+   real stack (ConnectionManager → HikariCP → QueryExecutor/TransactionManager/repositories/
+   DatabaseAssertions), loads `src/test/resources/db/embedded-h2.sql` (schema + seed), and asserts.
+   ```bash
+   mvn test -Dsuite.file=testng-db-embedded.xml      # verified 11/11 green, no external DB
+   ```
+2. **Live PostgreSQL/MySQL (full `database` group):** apply `src/test/resources/db/schema.sql`,
+   set credentials via `-Ddb.postgres.user=… -Ddb.postgres.password=…` (or env/secrets), then:
+   ```bash
+   mvn test -Dsuite.file=testng-database.xml
+   ```

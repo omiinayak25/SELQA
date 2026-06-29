@@ -36,6 +36,9 @@ jobs:
       - name: Smoke suite (offline core)
         run: mvn -B test -Dsuite.file=testng-smoke.xml
 
+      - name: Embedded DB integration (H2, zero-infra)
+        run: mvn -B test -Dsuite.file=testng-db-embedded.xml
+
       - name: Upload Allure results
         if: always()
         uses: actions/upload-artifact@v4
