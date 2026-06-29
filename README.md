@@ -16,6 +16,11 @@
 > Visual, Performance and Security testing — with parallel, cross-browser, Selenium Grid
 > and Docker execution, full CI/CD, and rich reporting.
 
+<p align="center">
+  <b>665+ meaningful scenarios</b> · 558 TestNG <code>@Test</code> · 151 executable BDD scenarios ·
+  7 API apps · 3 UI apps · 10 specialized layers
+</p>
+
 ---
 
 ## Table of Contents

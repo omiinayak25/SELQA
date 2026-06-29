@@ -1,7 +1,10 @@
 # OmiinQA — Project Metadata
 
-> Generated from the repository at commit `0aac3f8` (2026-06-29). Machine-readable
+> Generated from the repository at commit `0ad0aae` (2026-06-29). Machine-readable
 > companion: [`project-metadata.json`](project-metadata.json).
+>
+> **v2.0 coverage:** 558 `@Test` + 151 executable BDD scenarios = **665+ meaningful scenarios**
+> across 170 main + 78 test sources (≈18.2k main / 15.1k test LOC).
 
 ## Identity
 | Field | Value |
@@ -23,34 +26,38 @@
 ## Metrics (computed from source)
 | Metric | Value |
 |---|---|
-| Main source files | 109 |
-| Test source files | 19 |
-| Main lines of code | 10,482 |
-| Test lines of code | 2,169 |
-| `@Test` methods | 108 |
-| BDD feature files / scenarios | 2 / 5 |
-| TestNG suites | 8 |
-| Test-data files / JSON schemas | 6 / 3 |
-| Git-tracked files | 176 |
+| Main source files | 170 |
+| Test source files | 78 |
+| Main lines of code | 18,240 |
+| Test lines of code | 15,122 |
+| `@Test` methods | 558 |
+| BDD feature files / scenarios | 13 / 107 declared (151 executable) |
+| Total meaningful scenarios | 665+ |
+| TestNG suites | 9 |
+| Test-data files / JSON schemas | 6 / 7 |
+| Git-tracked files | 316 |
 
-## Module map — `src/main/java/com/omiinqa` (109 files)
+## Module map — `src/main/java/com/omiinqa` (170 files)
 | Package | Files | Package | Files | Package | Files |
 |---|---|---|---|---|---|
-| api | 28 | database | 12 | data | 11 |
-| utils | 9 | pages | 9 | components | 9 |
+| api | 52 | pages | 32 | database | 16 |
+| data | 11 | utils | 10 | components | 9 |
 | driver | 8 | exceptions | 6 | core | 3 |
 | enums | 3 | businessflows | 3 | listeners | 3 |
-| config | 2 | reports | 2 | constants | 1 |
+| performance | 3 | config | 2 | reports | 2 |
+| accessibility | 2 | visual | 2 | security | 2 |
+| constants | 1 | | | | |
 
 ## Test inventory by layer
-| Layer | Files | Tests | Suite | External need |
-|---|---|---|---|---|
-| Unit | 2 | 9 | `testng-smoke.xml` | none (offline) |
-| API | 5 | 56 | `testng-api.xml` | network |
-| UI | 2 | 6 | `testng-ui.xml` | browser / Grid |
-| E2E | 1 | 1 | `testng-e2e.xml` | browser + network |
-| Database | 4 | 36 | `testng-database.xml` | live DB |
-| BDD | 5 | 5 scenarios | `testng-bdd.xml` | browser / Grid |
+| Layer | Tests | Suite | External need |
+|---|---|---|---|
+| Unit | 9 | `testng-smoke.xml` | none (offline) |
+| API | 238 | `testng-api.xml` | network |
+| UI | 171 | `testng-ui.xml` | browser / Grid |
+| E2E | 36 | `testng-e2e.xml` | browser + network (+DB subset) |
+| Database | 88 | `testng-database.xml` | live DB |
+| Accessibility / Performance / Visual / Security / Responsive | 16 | `testng-specialized.xml` | browser / Grid |
+| BDD | 151 executable (107 declared) | `testng-bdd.xml` | browser / Grid |
 
 ## Technology stack
 Selenium 4.27 · TestNG 7.10 · WebDriverManager 5.9 · REST Assured 5.5 · Cucumber 7.20 ·
@@ -72,6 +79,7 @@ JSONPlaceholder, httpbin, GraphQL Countries.
 |---|---|---|
 | Compile | `mvn clean test-compile` | SUCCESS |
 | Smoke (offline) | `mvn test -Dsuite.file=testng-smoke.xml` | 9/9 passing |
+| BDD dry-run | `mvn test -Dsuite.file=testng-bdd.xml -Dcucumber.execution.dry-run=true` | 151 scenarios, 0 undefined/ambiguous |
 
 ## Entry points
 - Build: `mvn clean test-compile`

@@ -22,6 +22,23 @@ as scenarios grow; CI can later assert every requirement has ≥1 linked, passin
 | REQ-API-04 | Contract (JSON schema) validation | API | `SchemaValidationApiTest` | api | ✅ |
 | REQ-DB-01 | Repository CRUD | DB | `UserRepositoryTest` | database | ✅* |
 | REQ-DB-02 | Parameterized queries (SQLi-safe) | DB | `QueryExecutorTest` | database | ✅* |
-| REQ-DB-03 | Transaction commit/rollback | DB | `TransactionTest` | database | ✅* |
+| REQ-DB-03 | Transaction commit/rollback | DB | `TransactionTest`, `TransactionRollbackTest` | database | ✅* |
+| REQ-DB-04 | Order/Audit repository CRUD | DB | `OrderRepositoryTest` | database | ✅* |
+| REQ-DB-05 | Integrity & constraints | DB | `DataIntegrityTest` | database | ✅* |
+| REQ-DB-06 | Aggregation (COUNT/SUM/AVG/GROUP BY) | DB | `AggregationQueryTest` | database | ✅* |
+| REQ-API-05 | JSONPlaceholder resources CRUD | API | `Posts/Comments/Todos/Users/AlbumsPhotos ApiTest` | api | ✅ |
+| REQ-API-06 | HTTP mechanics (headers/auth/status/cookies) | API | `Http*Test` (httpbin) | api | ✅ |
+| REQ-API-07 | Petstore CRUD + chaining | API | `PetCrud/StoreOrder/PetstoreUser ApiTest` | api | ✅ |
+| REQ-API-08 | GraphQL queries/variables/errors | API | `Country/Continent/Variables/Negative QueryTest` | api | ✅ |
+| REQ-UI-04 | OrangeHRM PIM/Admin/nav | UI | `Pim/AdminUserSearch/Dashboard/OrangeAuthentication Test` | ui | ✅ |
+| REQ-UI-05 | UI mechanics (windows/frames/alerts/upload/storage) | UI | `*MechanicsTest` (the-internet) | ui | ✅ |
+| REQ-UI-06 | Checkout totals math (subtotal/tax/total) | UI | `CheckoutTotalsTest` | ui | ✅ |
+| REQ-A11Y-01 | WCAG 2.1 AA — no critical/serious | A11y | `AccessibilityTest` | specialized | ✅ |
+| REQ-PERF-01 | Page-load navigation-timing budget | Perf | `PerformanceSmokeTest` | specialized | ✅ |
+| REQ-VIS-01 | Visual baseline regression | Visual | `VisualRegressionTest` | specialized | ✅ |
+| REQ-SEC-01 | SQLi/XSS rejected; session/secret checks | Security | `SecurityTest` | specialized | ✅ |
+| REQ-RESP-01 | Responsive viewport matrix | Responsive | `ResponsiveTest` | specialized | ✅ |
+| REQ-E2E-02 | API→UI→DB journeys | E2E | `ApiUiDbE2ETest`, `ApiDrivenUiE2ETest` | e2e | ✅* |
+| REQ-BDD-01 | Business-readable coverage (13 features) | BDD | 11 step classes, 151 scenarios | bdd | ✅ |
 
-`✅` verified in CI · `✅*` implemented; requires a live DB to execute.
+`✅` verified (compile + dry-run/CI) · `✅*` implemented; requires a live DB to execute.

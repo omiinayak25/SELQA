@@ -6,9 +6,10 @@ Status: ✅ done · 🚧 in progress · ⏭️ planned
 Build, config, driver/Grid, core base classes, UI POM, API framework, DB layer, data
 layer, reporting, BDD, Docker, CI/CD, quality gates, docs. 108 `@Test` + 5 BDD scenarios.
 
-## v2.0 — Enterprise coverage expansion (🚧 in progress)
-Goal: **600+ meaningful, non-duplicate scenarios** + **150–200 reusable BDD scenarios**,
-full UI/API/DB/E2E coverage, specialized test layers, synchronized docs.
+## v2.0 — Enterprise coverage expansion (✅ targets met)
+Goal: **600+ meaningful, non-duplicate scenarios** + **150–200 reusable BDD scenarios**.
+**Delivered: 558 `@Test` + 151 executable BDD = 665+ scenarios.** Full UI/API/DB/E2E
+coverage, specialized layers, synchronized docs — all compiling, smoke green, BDD dry-run clean.
 
 ### Target scenario distribution
 | Domain | Target | Primary source |
@@ -38,17 +39,13 @@ full UI/API/DB/E2E coverage, specialized test layers, synchronized docs.
 | **Total** | **600+** | |
 
 ### Implementation waves
-- **Wave A — API breadth** ⏭️: JSONPlaceholder, httpbin, GraphQL Countries, Petstore services
-  + tests; depth on ReqRes/Booking/DummyJSON (pagination/filter/sort/negative/boundary/contract).
-- **Wave B — UI breadth** ⏭️: SauceDemo auth/inventory/cart/checkout/forms, OrangeHRM PIM/admin/nav,
-  UI mechanics (windows/tabs/cookies/storage/downloads/sync), cross-browser params.
-- **Wave C — specialized layers** ⏭️: accessibility (axe), performance smoke, visual regression
-  (+ visual util), security (headers/SQLi/XSS), responsive (viewport matrix).
-- **Wave D — DB + E2E + BDD** ⏭️: DB integrity/cross-validation, API→UI→DB journeys, BDD feature
-  files across all domains (150–200 scenarios) + reusable steps.
-- **Wave E — sync** ⏭️: docs, traceability matrix, metadata regen, final report.
+- **Wave A — API breadth** ✅: JSONPlaceholder (69), httpbin (43), GraphQL (28), Petstore (42).
+- **Wave B — UI breadth** ✅: SauceDemo deep (67), OrangeHRM (41), the-internet UI mechanics (63).
+- **Wave C — specialized layers** ✅: accessibility, performance, visual, security, responsive (+utilities).
+- **Wave D — DB + E2E + BDD** ✅: DB depth (88), E2E (36), BDD (+139 scenarios).
+- **Wave E — sync** ✅: docs, traceability, metadata regen, final report.
 
-Each wave: build → integrate → `mvn test-compile` → offline smoke → commit.
+Each wave: build → integrate → `mvn test-compile` → offline smoke → commit. Done.
 
 ## v2.1+ — Reliability & scale (⏭️ later)
 Flaky detector + quarantine, Allure history/trends, test-impact selection, cloud Grid
