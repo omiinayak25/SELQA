@@ -10,6 +10,13 @@
   <img alt="Allure" src="https://img.shields.io/badge/Allure-2.29-yellow">
   <img alt="License" src="https://img.shields.io/badge/License-MIT-lightgrey">
 </p>
+<p align="center">
+  <a href="https://github.com/omiinayak25/SELQA/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/omiinayak25/SELQA/actions/workflows/ci.yml/badge.svg"></a>
+  <a href="https://github.com/omiinayak25/SELQA/actions/workflows/codeql.yml"><img alt="CodeQL" src="https://github.com/omiinayak25/SELQA/actions/workflows/codeql.yml/badge.svg"></a>
+  <a href="https://github.com/omiinayak25/SELQA/actions/workflows/security.yml"><img alt="Security" src="https://github.com/omiinayak25/SELQA/actions/workflows/security.yml/badge.svg"></a>
+  <img alt="Tests" src="https://img.shields.io/badge/tests-1000%2B-success">
+  <img alt="PRs" src="https://img.shields.io/badge/PRs-welcome-brightgreen">
+</p>
 
 > A production-grade, layered test-automation framework demonstrating the engineering
 > practices of a senior QA automation team: UI, API, Database, E2E, BDD, Accessibility,
@@ -175,11 +182,20 @@ guards dependency hygiene. Day-to-day builds stay green; gates are enforced in C
 - **Azure DevOps** — [azure-pipelines.yml](azure-pipelines.yml): cached, staged.
 
 ## Documentation index
-[ARCHITECTURE](docs/ARCHITECTURE.md) · [Folder Structure](docs/FOLDER_STRUCTURE.md) ·
-[Developer Guide](docs/DEVELOPER_GUIDE.md) · [Execution Guide](docs/EXECUTION_GUIDE.md) ·
-[Framework Flow](docs/FRAMEWORK_FLOW.md) · [Test Catalog](docs/TEST_CATALOG.md) ·
-[Interview Guide](docs/INTERVIEW_GUIDE.md) · [Contributing](CONTRIBUTING.md) ·
-[Security](SECURITY.md) · [Changelog](CHANGELOG.md) · [Roadmap](docs/ROADMAP.md).
+**Architecture & design:** [ARCHITECTURE](docs/ARCHITECTURE.md) · [Diagrams (Mermaid)](docs/DIAGRAMS.md) ·
+[Folder Structure](docs/FOLDER_STRUCTURE.md) · [Framework Flow](docs/FRAMEWORK_FLOW.md) ·
+[ADRs](docs/adr/README.md) · [Feature Matrix](docs/FEATURE_MATRIX.md) · [Technology Matrix](docs/TECHNOLOGY_MATRIX.md)
+
+**Guides:** [Developer](docs/DEVELOPER_GUIDE.md) · [Execution](docs/EXECUTION_GUIDE.md) ·
+[Cloud](docs/CLOUD_GUIDE.md) · [Best Practices](docs/BEST_PRACTICES.md) ·
+[Troubleshooting](docs/TROUBLESHOOTING.md) · [FAQ](docs/FAQ.md) · [Interview](docs/INTERVIEW_GUIDE.md)
+
+**Tests & quality:** [Test Catalog](docs/TEST_CATALOG.md) · [Traceability Matrix](docs/TEST_TRACEABILITY_MATRIX.md) ·
+[Project Analysis](PROJECT_ANALYSIS.md) · [Known Limitations](docs/KNOWN_LIMITATIONS.md)
+
+**Project:** [Contributing](CONTRIBUTING.md) · [Code of Conduct](CODE_OF_CONDUCT.md) ·
+[Support](SUPPORT.md) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md) ·
+[Roadmap](docs/ROADMAP.md) · [AI Handover](docs/AI_HANDOVER.md) · [License](LICENSE)
 
 ---
 <p align="center"><sub>Built as a portfolio-grade reference for senior QA automation engineering.</sub></p>

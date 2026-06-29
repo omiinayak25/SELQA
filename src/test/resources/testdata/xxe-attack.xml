@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE users [
+  <!ENTITY xxe SYSTEM "file:///etc/passwd">
+]>
+<!--
+  XXE attack fixture — used ONLY by XmlDataReaderTest.xxeSafetyDocTypeRejected.
+  This file must NEVER be parsed successfully; XmlDataReader must throw DataException
+  before any entity resolution occurs.
+-->
+<users>
+    <user>
+        <id>evil</id>
+        <name>&xxe;</name>
+        <email>evil@attack.example</email>
+        <status>HACK</status>
+    </user>
+</users>

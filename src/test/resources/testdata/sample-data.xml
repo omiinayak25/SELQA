@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Sample XML test-data fixture for XmlDataReaderTest.
+  Structure: <users> root containing multiple <user> records.
+  Each <user> has: <id>, <name>, <email>, <status> child elements.
+-->
+<users>
+
+    <user>
+        <id>U001</id>
+        <name>Alice Johnson</name>
+        <email>alice.johnson@example.com</email>
+        <status>ACTIVE</status>
+    </user>
+
+    <user>
+        <id>U002</id>
+        <name>Bob Martinez</name>
+        <email>bob.martinez@example.com</email>
+        <status>INACTIVE</status>
+    </user>
+
+    <user>
+        <id>U003</id>
+        <name>Carol White</name>
+        <email>carol.white@example.com</email>
+        <status>ACTIVE</status>
+    </user>
+
+    <user>
+        <id>U004</id>
+        <name>David Kim</name>
+        <email>david.kim@example.com</email>
+        <status>SUSPENDED</status>
+    </user>
+
+    <user>
+        <id>U005</id>
+        <name>Eve Torres</name>
+        <email>eve.torres@example.com</email>
+        <status>ACTIVE</status>
+    </user>
+
+</users>
