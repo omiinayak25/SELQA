@@ -10,7 +10,8 @@
       "Bash(curl -s --max-time 15 -X POST https://countries.trevorblades.com/ -H \"Content-Type: application/json\" -d '{\"query\":\"{ thisIsNotValid }\"}' -w \"\\\\nHTTP=%{http_code}\\\\n\")",
       "Bash(curl -s --max-time 15 -X POST https://countries.trevorblades.com/ -H \"Content-Type: application/json\" -d '{\"query\":\"\"}' -w \"\\\\nHTTP=%{http_code}\\\\n\")",
       "Bash(curl -s --max-time 15 -X POST https://countries.trevorblades.com/ -H \"Content-Type: application/json\" -d '{\"query\":\"{ country\\(code: \\\\\"US\\\\\"\\) { name capital\"}' -w \"\\\\nHTTP=%{http_code}\\\\n\" -o /dev/null)",
-      "Bash(awk -F'\\\\t' '/Smoke suite/ {print}')"
+      "Bash(awk -F'\\\\t' '/Smoke suite/ {print}')",
+      "Bash(awk '/Dump surefire forked-process diagnostics/,/Post Set up JDK|Embedded DB integration/' /tmp/job3.log)"
     ]
   }
 }
