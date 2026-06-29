@@ -1,0 +1,82 @@
+# =====================================================================
+#  OmiinQA :: GitLab CI/CD
+#  Mirrors the GitHub Actions pipeline: build -> quality/security ->
+#  test -> report. Uses a Maven+JDK21 image and caches ~/.m2.
+# =====================================================================
+image: maven:3.9.9-eclipse-temurin-21
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN"
+  MAVEN_CLI_OPTS: "-B --no-transfer-progress"
+
+cache:
+  key: "$CI_COMMIT_REF_SLUG"
+  paths:
+    - .m2/repository
+
+stages:
+  - build
+  - quality
+  - test
+  - report
+
+build:
+  stage: build
+  script:
+    - mvn $MAVEN_CLI_OPTS clean test-compile
+    - mvn $MAVEN_CLI_OPTS test -Dsuite.file=testng-smoke.xml
+    - mvn $MAVEN_CLI_OPTS test -Dsuite.file=testng-db-embedded.xml
+  artifacts:
+    when: always
+    reports:
+      junit: target/surefire-reports/TEST-*.xml
+    paths:
+      - target/allure-results
+    expire_in: 1 week
+
+static-analysis:
+  stage: quality
+  needs: ["build"]
+  script:
+    - mvn $MAVEN_CLI_OPTS -P quality verify -DskipTests
+  allow_failure: true
+
+api-tests:
+  stage: test
+  needs: ["build"]
+  script:
+    - mvn $MAVEN_CLI_OPTS test -Dsuite.file=testng-api-smoke.xml
+  artifacts:
+    when: always
+    paths:
+      - target/allure-results
+    expire_in: 1 week
+
+ui-tests:
+  stage: test
+  needs: ["build"]
+  services:
+    - name: selenium/standalone-chrome:4.27.0
+      alias: selenium-chrome
+  variables:
+    SE_NODE_MAX_SESSIONS: "4"
+  script:
+    - until curl -sSf http://selenium-chrome:4444/wd/hub/status; do sleep 3; done
+    - >
+      mvn $MAVEN_CLI_OPTS test -Dsuite.file=testng-ui.xml
+      -Dexecution.mode=grid -Dbrowser=remote-chrome
+      -Dgrid.url=http://selenium-chrome:4444/wd/hub
+  allow_failure: true
+  artifacts:
+    when: always
+    paths:
+      - target/allure-results
+      - screenshots
+    expire_in: 1 week
+
+pages-report:
+  stage: report
+  needs: ["api-tests"]
+  script:
+    - echo "Aggregate Allure results are published as artifacts per job."
+  when: always

@@ -1,0 +1,35 @@
+version: 2
+updates:
+  # Maven dependencies — weekly, grouped to reduce PR noise.
+  - package-ecosystem: maven
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 10
+    labels: ["dependencies", "java"]
+    groups:
+      selenium:
+        patterns: ["org.seleniumhq.selenium:*", "io.github.bonigarcia:*"]
+      testing:
+        patterns: ["org.testng:*", "io.rest-assured:*", "io.cucumber:*", "org.assertj:*"]
+      jackson:
+        patterns: ["com.fasterxml.jackson*:*"]
+      logging:
+        patterns: ["org.apache.logging.log4j:*", "org.slf4j:*"]
+      build-plugins:
+        patterns: ["*-maven-plugin", "*:maven-*-plugin"]
+
+  # GitHub Actions — keep workflow actions current.
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    labels: ["dependencies", "ci"]
+
+  # Docker base images for the Grid / runner.
+  - package-ecosystem: docker
+    directory: "/docker"
+    schedule:
+      interval: weekly
+    labels: ["dependencies", "docker"]

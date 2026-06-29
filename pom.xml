@@ -575,6 +575,68 @@
             </build>
         </profile>
 
+        <!-- Mutation testing (PIT). Run: mvn -P pitest test pitest:mutationCoverage
+             Scoped to deterministic offline-testable packages so it runs in CI. -->
+        <profile>
+            <id>pitest</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-maven</artifactId>
+                        <version>1.17.0</version>
+                        <configuration>
+                            <targetClasses>
+                                <param>com.omiinqa.config.*</param>
+                                <param>com.omiinqa.enums.*</param>
+                                <param>com.omiinqa.observability.*</param>
+                                <param>com.omiinqa.reports.export.*</param>
+                            </targetClasses>
+                            <targetTests>
+                                <param>com.omiinqa.unit.*</param>
+                                <param>com.omiinqa.observability.*</param>
+                                <param>com.omiinqa.reports.export.*</param>
+                            </targetTests>
+                            <outputFormats>
+                                <param>HTML</param>
+                                <param>XML</param>
+                            </outputFormats>
+                            <timestampedReports>false</timestampedReports>
+                            <mutationThreshold>0</mutationThreshold>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- Software Bill of Materials (CycloneDX). Run: mvn -P sbom package -DskipTests
+             Emits target/bom.json + bom.xml with full dependency + license inventory. -->
+        <profile>
+            <id>sbom</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.cyclonedx</groupId>
+                        <artifactId>cyclonedx-maven-plugin</artifactId>
+                        <version>2.9.1</version>
+                        <configuration>
+                            <projectType>application</projectType>
+                            <schemaVersion>1.5</schemaVersion>
+                            <outputFormat>all</outputFormat>
+                            <outputName>bom</outputName>
+                            <includeLicenseText>false</includeLicenseText>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals><goal>makeAggregateBom</goal></goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
         <!-- Convenience profiles for cross-browser runs -->
         <profile>
             <id>chrome</id>

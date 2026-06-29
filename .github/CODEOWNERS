@@ -1,0 +1,21 @@
+# OmiinQA code ownership — reviewers auto-requested on matching paths.
+# https://docs.github.com/articles/about-code-owners
+
+*                           @omiinayak25
+
+# Core framework
+/src/main/java/com/omiinqa/core/        @omiinayak25
+/src/main/java/com/omiinqa/driver/      @omiinayak25
+/src/main/java/com/omiinqa/config/      @omiinayak25
+
+# Build, CI/CD, and quality gates
+/pom.xml                    @omiinayak25
+/.github/                   @omiinayak25
+/Jenkinsfile                @omiinayak25
+/azure-pipelines.yml        @omiinayak25
+/.gitlab-ci.yml             @omiinayak25
+/docker/                    @omiinayak25
+
+# Documentation
+/docs/                      @omiinayak25
+*.md                        @omiinayak25

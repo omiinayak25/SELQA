@@ -1,0 +1,62 @@
+name: 🐛 Bug Report
+description: Report a defect in the OmiinQA framework
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to file a bug. Please complete the sections below.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear and concise description of the bug.
+      placeholder: When I run … the framework …
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Exact commands and configuration.
+      placeholder: |
+        1. mvn test -Dsuite.file=…
+        2. …
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: input
+    id: suite
+    attributes:
+      label: Suite / command
+      placeholder: testng-api-smoke.xml
+  - type: dropdown
+    id: layer
+    attributes:
+      label: Affected layer
+      options: [UI, API, Database, BDD, E2E, Reporting, Driver/Grid, CI/CD, Other]
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      description: Java version, OS, browser, Maven version, execution mode (local/grid/cloud).
+      placeholder: |
+        - Java: 21.0.x
+        - OS: Ubuntu 24.04
+        - Browser: chrome 131 (headless)
+        - Execution: grid
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / report
+      description: Relevant logs (logs/omiinqa.log) or Allure/Extent excerpts. Mask any secrets.
+      render: shell
