@@ -40,8 +40,8 @@
         <maven.compiler.release>21</maven.compiler.release>
 
         <!-- Core automation -->
-        <selenium.version>4.27.0</selenium.version>
-        <webdrivermanager.version>5.9.2</webdrivermanager.version>
+        <selenium.version>4.45.0</selenium.version>
+        <webdrivermanager.version>6.3.4</webdrivermanager.version>
         <testng.version>7.10.2</testng.version>
 
         <!-- API -->
