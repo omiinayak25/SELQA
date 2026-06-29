@@ -5,7 +5,7 @@
   - RollingFile: full DEBUG trace, rolled daily / at 10MB, 30-file history.
   - ThreadContext (%X{testName}, %X{thread}) lets parallel runs be untangled.
 -->
-<Configuration status="WARN" packages="">
+<Configuration status="WARN">
     <Properties>
         <Property name="LOG_PATTERN">
             %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %X{testName} %logger{36} - %msg%n

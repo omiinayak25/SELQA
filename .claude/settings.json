@@ -9,7 +9,8 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" --max-time 15 https://petstore.swagger.io/v2/pet/9999999)",
       "Bash(curl -s --max-time 15 -X POST https://countries.trevorblades.com/ -H \"Content-Type: application/json\" -d '{\"query\":\"{ thisIsNotValid }\"}' -w \"\\\\nHTTP=%{http_code}\\\\n\")",
       "Bash(curl -s --max-time 15 -X POST https://countries.trevorblades.com/ -H \"Content-Type: application/json\" -d '{\"query\":\"\"}' -w \"\\\\nHTTP=%{http_code}\\\\n\")",
-      "Bash(curl -s --max-time 15 -X POST https://countries.trevorblades.com/ -H \"Content-Type: application/json\" -d '{\"query\":\"{ country\\(code: \\\\\"US\\\\\"\\) { name capital\"}' -w \"\\\\nHTTP=%{http_code}\\\\n\" -o /dev/null)"
+      "Bash(curl -s --max-time 15 -X POST https://countries.trevorblades.com/ -H \"Content-Type: application/json\" -d '{\"query\":\"{ country\\(code: \\\\\"US\\\\\"\\) { name capital\"}' -w \"\\\\nHTTP=%{http_code}\\\\n\" -o /dev/null)",
+      "Bash(awk -F'\\\\t' '/Smoke suite/ {print}')"
     ]
   }
 }

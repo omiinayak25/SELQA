@@ -377,9 +377,13 @@
                         <env>${env}</env>
                         <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
                     </systemPropertyVariables>
-                    <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                    </argLine>
+                    <!-- Force the real classpath onto the forked JVM (not a manifest-only
+                         jar) so TestNG can resolve suite-XML listeners on CI path layouts. -->
+                    <useSystemClassLoader>true</useSystemClassLoader>
+                    <useManifestOnlyJar>false</useManifestOnlyJar>
+                    <!-- @{argLine} appends to JaCoCo's prepare-agent argLine rather than
+                         replacing it; single line + no quotes avoids fork-arg mangling. -->
+                    <argLine>@{argLine} -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar</argLine>
                 </configuration>
                 <dependencies>
                     <dependency>
