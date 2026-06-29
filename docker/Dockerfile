@@ -5,14 +5,14 @@
 # =====================================================================
 
 # ---- Stage 1: dependency cache ----
-FROM maven:3.9.9-eclipse-temurin-21 AS deps
+FROM maven:3.9.15-eclipse-temurin-26 AS deps
 WORKDIR /build
 COPY pom.xml .
 # Resolve dependencies offline-friendly so subsequent builds are cached.
 RUN mvn -B -q dependency:go-offline
 
 # ---- Stage 2: runner ----
-FROM maven:3.9.9-eclipse-temurin-21
+FROM maven:3.9.15-eclipse-temurin-26
 LABEL org.opencontainers.image.title="OmiinQA Selenium Framework" \
       org.opencontainers.image.source="https://github.com/omiinayak25/SELQA"
 WORKDIR /omiinqa
