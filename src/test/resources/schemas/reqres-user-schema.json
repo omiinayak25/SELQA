@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ReqRes Single User Response",
+  "description": "JSON Schema for GET /users/{id} response from reqres.in",
+  "type": "object",
+  "required": ["data", "support"],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": ["id", "email", "first_name", "last_name", "avatar"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Numeric user identifier",
+          "minimum": 1
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "User email address"
+        },
+        "first_name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "User first name"
+        },
+        "last_name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "User last name"
+        },
+        "avatar": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to user avatar image"
+        }
+      },
+      "additionalProperties": false
+    },
+    "support": {
+      "type": "object",
+      "required": ["url", "text"],
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Support page URL"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Support message text"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

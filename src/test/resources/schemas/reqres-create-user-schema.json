@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ReqRes Create User Response",
+  "description": "JSON Schema for POST /users response from reqres.in",
+  "type": "object",
+  "required": ["id", "createdAt"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "User display name (echoed from request)"
+    },
+    "job": {
+      "type": "string",
+      "description": "User job title (echoed from request)"
+    },
+    "id": {
+      "type": "string",
+      "description": "Server-assigned unique identifier",
+      "minLength": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "ISO-8601 creation timestamp"
+    }
+  }
+}

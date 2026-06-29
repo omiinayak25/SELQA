@@ -1,0 +1,82 @@
+[
+  {
+    "id": "usr-001",
+    "firstName": "Alice",
+    "lastName": "Smith",
+    "email": "alice.smith@omiinqa.test",
+    "username": "alice_smith",
+    "password": "P@ssw0rd!1",
+    "phone": "+1-555-010-0001",
+    "address": {
+      "street": "100 Oak Avenue",
+      "city": "Portland",
+      "state": "Oregon",
+      "zipCode": "97201",
+      "country": "US"
+    }
+  },
+  {
+    "id": "usr-002",
+    "firstName": "Bob",
+    "lastName": "Jones",
+    "email": "bob.jones@omiinqa.test",
+    "username": "bob_jones",
+    "password": "P@ssw0rd!2",
+    "phone": "+1-555-010-0002",
+    "address": {
+      "street": "200 Elm Street",
+      "city": "Austin",
+      "state": "Texas",
+      "zipCode": "78701",
+      "country": "US"
+    }
+  },
+  {
+    "id": "usr-003",
+    "firstName": "Carol",
+    "lastName": "White",
+    "email": "carol.white@omiinqa.test",
+    "username": "carol_white",
+    "password": "P@ssw0rd!3",
+    "phone": "+1-555-010-0003",
+    "address": {
+      "street": "300 Maple Lane",
+      "city": "Denver",
+      "state": "Colorado",
+      "zipCode": "80201",
+      "country": "US"
+    }
+  },
+  {
+    "id": "usr-004",
+    "firstName": "David",
+    "lastName": "Brown",
+    "email": "david.brown@omiinqa.test",
+    "username": "david_brown",
+    "password": "P@ssw0rd!4",
+    "phone": "+1-555-010-0004",
+    "address": {
+      "street": "400 Pine Road",
+      "city": "Seattle",
+      "state": "Washington",
+      "zipCode": "98101",
+      "country": "US"
+    }
+  },
+  {
+    "id": "usr-005",
+    "firstName": "Eve",
+    "lastName": "Garcia",
+    "email": "eve.garcia@omiinqa.test",
+    "username": "eve_garcia",
+    "password": "P@ssw0rd!5",
+    "phone": "+1-555-010-0005",
+    "address": {
+      "street": "500 Cedar Boulevard",
+      "city": "Miami",
+      "state": "Florida",
+      "zipCode": "33101",
+      "country": "US"
+    }
+  }
+]

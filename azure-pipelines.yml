@@ -1,0 +1,80 @@
+# =====================================================================
+#  OmiinQA :: Azure DevOps pipeline
+# =====================================================================
+trigger:
+  branches:
+    include: [ main, develop ]
+
+pr:
+  branches:
+    include: [ main ]
+
+parameters:
+  - name: suite
+    type: string
+    default: testng-smoke.xml
+  - name: browser
+    type: string
+    default: chrome
+
+variables:
+  MAVEN_CACHE_FOLDER: $(Pipeline.Workspace)/.m2/repository
+  MAVEN_OPTS: '-Dmaven.repo.local=$(MAVEN_CACHE_FOLDER)'
+
+stages:
+  - stage: Build
+    displayName: Build & Smoke
+    jobs:
+      - job: build
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - task: JavaToolInstaller@0
+            inputs:
+              versionSpec: '21'
+              jdkArchitectureOption: x64
+              jdkSourceOption: PreInstalled
+          - task: Cache@2
+            inputs:
+              key: 'maven | "$(Agent.OS)" | pom.xml'
+              path: $(MAVEN_CACHE_FOLDER)
+            displayName: Cache Maven
+          - script: mvn -B clean test-compile
+            displayName: Compile
+          - script: mvn -B test -Dsuite.file=testng-smoke.xml
+            displayName: Smoke (offline core)
+          - task: PublishTestResults@2
+            condition: always()
+            inputs:
+              testResultsFormat: JUnit
+              testResultsFiles: '**/surefire-reports/*.xml'
+              testRunTitle: 'OmiinQA Smoke'
+
+  - stage: Quality
+    dependsOn: Build
+    jobs:
+      - job: quality
+        pool: { vmImage: ubuntu-latest }
+        steps:
+          - task: JavaToolInstaller@0
+            inputs: { versionSpec: '21', jdkArchitectureOption: x64, jdkSourceOption: PreInstalled }
+          - script: mvn -B -P quality verify -DskipTests
+            displayName: Static Analysis
+
+  - stage: Test
+    dependsOn: Build
+    jobs:
+      - job: api
+        displayName: API Tests
+        pool: { vmImage: ubuntu-latest }
+        steps:
+          - task: JavaToolInstaller@0
+            inputs: { versionSpec: '21', jdkArchitectureOption: x64, jdkSourceOption: PreInstalled }
+          - script: mvn -B test -Dsuite.file=testng-api.xml
+            displayName: API Suite
+            continueOnError: true
+          - task: PublishPipelineArtifact@1
+            condition: always()
+            inputs:
+              targetPath: target/allure-results
+              artifact: allure-results-api

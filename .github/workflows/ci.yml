@@ -1,0 +1,142 @@
+name: OmiinQA CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      suite:
+        description: "TestNG suite file"
+        default: "testng-smoke.xml"
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ---------------------------------------------------------------- build
+  build:
+    name: Build & Smoke (offline)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      - name: Compile
+        run: mvn -B clean test-compile
+
+      - name: Smoke suite (offline core)
+        run: mvn -B test -Dsuite.file=testng-smoke.xml
+
+      - name: Upload Allure results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-smoke
+          path: target/allure-results
+          if-no-files-found: ignore
+
+  # ---------------------------------------------------------------- quality
+  quality:
+    name: Static Analysis
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - name: Checkstyle / PMD / SpotBugs
+        run: mvn -B -P quality verify -DskipTests
+      - name: Coverage report
+        run: mvn -B jacoco:report || true
+
+  # ---------------------------------------------------------------- api
+  api-tests:
+    name: API Tests
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - name: Run API suite
+        run: mvn -B test -Dsuite.file=testng-api.xml
+        continue-on-error: true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-results-api
+          path: target/allure-results
+          if-no-files-found: ignore
+
+  # ---------------------------------------------------------------- ui on grid
+  ui-tests:
+    name: UI Tests (Selenium Grid)
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - name: Start Selenium Grid
+        run: docker compose -f docker/docker-compose-grid.yml up -d --scale chrome=2
+      - name: Wait for hub
+        run: |
+          for i in $(seq 1 30); do
+            curl -sSf http://localhost:4444/wd/hub/status && break || sleep 3
+          done
+      - name: Run UI suite on Grid
+        run: >
+          mvn -B test -Dsuite.file=testng-ui.xml
+          -Dexecution.mode=grid -Dbrowser=remote-chrome
+          -Dgrid.url=http://localhost:4444/wd/hub
+        continue-on-error: true
+      - name: Tear down Grid
+        if: always()
+        run: docker compose -f docker/docker-compose-grid.yml down
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-results-ui
+          path: target/allure-results
+          if-no-files-found: ignore
+
+  # ---------------------------------------------------------------- report
+  publish-report:
+    name: Publish Allure Report
+    runs-on: ubuntu-latest
+    needs: [ api-tests, ui-tests ]
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: allure-artifacts
+      - name: Generate Allure report
+        uses: simple-elf/allure-report-action@v1.9
+        with:
+          allure_results: allure-artifacts
+          allure_report: allure-report
+        continue-on-error: true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report
+          if-no-files-found: ignore

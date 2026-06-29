@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!--
+  Cross-browser demonstration. The same <test> block is repeated per browser,
+  each passing a 'browser' parameter. Parallel="tests" runs the browsers
+  concurrently; methods within each browser run on the configured thread pool.
+  (Tests read the 'browser' system property / parameter via configuration.)
+-->
+<suite name="OmiinQA-CrossBrowser" parallel="tests" thread-count="3" verbose="1">
+    <listeners>
+        <listener class-name="com.omiinqa.listeners.TestListener"/>
+        <listener class-name="com.omiinqa.reports.ExtentReportListener"/>
+    </listeners>
+
+    <test name="Chrome">
+        <parameter name="browser" value="chrome"/>
+        <packages><package name="com.omiinqa.ui"/></packages>
+    </test>
+    <test name="Firefox">
+        <parameter name="browser" value="firefox"/>
+        <packages><package name="com.omiinqa.ui"/></packages>
+    </test>
+    <test name="Edge">
+        <parameter name="browser" value="edge"/>
+        <packages><package name="com.omiinqa.ui"/></packages>
+    </test>
+</suite>

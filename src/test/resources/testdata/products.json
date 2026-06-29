@@ -1,0 +1,50 @@
+[
+  {
+    "id": "prod-001",
+    "name": "Sauce Labs Backpack",
+    "price": 29.99,
+    "category": "Bags",
+    "description": "Carry all the things with the sleekest, most durable backpack.",
+    "imageUrl": "/static/media/sauce-backpack-1200x1500.34e7f31f.jpg"
+  },
+  {
+    "id": "prod-002",
+    "name": "Sauce Labs Bike Light",
+    "price": 9.99,
+    "category": "Accessories",
+    "description": "A red light isn't the desired state in testing but it sure helps.",
+    "imageUrl": "/static/media/bike-light-1200x1500.a0c9caae.jpg"
+  },
+  {
+    "id": "prod-003",
+    "name": "Sauce Labs Bolt T-Shirt",
+    "price": 15.99,
+    "category": "Clothing",
+    "description": "Get your testing superhero on with the Sauce Labs bolt T-shirt.",
+    "imageUrl": "/static/media/bolt-shirt-1200x1500.c2599ac5.jpg"
+  },
+  {
+    "id": "prod-004",
+    "name": "Sauce Labs Fleece Jacket",
+    "price": 49.99,
+    "category": "Clothing",
+    "description": "It's not every day that you come across a midweight quarter-zip fleece jacket.",
+    "imageUrl": "/static/media/sauce-pullover-1200x1500.51d7ffaf.jpg"
+  },
+  {
+    "id": "prod-005",
+    "name": "Sauce Labs Onesie",
+    "price": 7.99,
+    "category": "Clothing",
+    "description": "Rib snap infant onesie for the junior automation engineer in your life.",
+    "imageUrl": "/static/media/red-onesie-1200x1500.2ec615b2.jpg"
+  },
+  {
+    "id": "prod-006",
+    "name": "Test.allTheThings() T-Shirt (Red)",
+    "price": 15.99,
+    "category": "Clothing",
+    "description": "This classic unisex jersey short-sleeve tee fits like a well-loved favorite.",
+    "imageUrl": "/static/media/red-tatt-1200x1500.30dadef4.jpg"
+  }
+]

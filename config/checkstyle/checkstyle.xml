@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+        "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+        "https://checkstyle.org/dtds/configuration_1_3.dtd">
+<!--
+  OmiinQA Checkstyle ruleset — a pragmatic enterprise subset. Tuned to catch
+  real defects (empty blocks, missing braces, magic constants in production
+  code, import hygiene) without bikeshedding on formatting that the
+  .editorconfig + IDE already handle.
+-->
+<module name="Checker">
+    <property name="severity" value="warning"/>
+    <property name="charset" value="UTF-8"/>
+    <property name="fileExtensions" value="java"/>
+
+    <module name="FileLength">
+        <property name="max" value="600"/>
+    </module>
+    <module name="LineLength">
+        <property name="max" value="140"/>
+        <property name="ignorePattern" value="^\s*\*.*$|^import.*$"/>
+    </module>
+
+    <module name="TreeWalker">
+        <!-- Imports -->
+        <module name="UnusedImports"/>
+        <module name="RedundantImport"/>
+        <module name="AvoidStarImport"/>
+
+        <!-- Blocks & braces -->
+        <module name="EmptyBlock">
+            <property name="option" value="text"/>
+        </module>
+        <module name="NeedBraces"/>
+        <module name="LeftCurly"/>
+        <module name="RightCurly"/>
+
+        <!-- Coding -->
+        <module name="EmptyStatement"/>
+        <module name="SimplifyBooleanExpression"/>
+        <module name="SimplifyBooleanReturn"/>
+        <module name="EqualsHashCode"/>
+        <module name="MissingSwitchDefault"/>
+        <module name="FallThrough"/>
+
+        <!-- Naming -->
+        <module name="PackageName"/>
+        <module name="TypeName"/>
+        <module name="MethodName"/>
+        <module name="ConstantName"/>
+        <module name="LocalVariableName"/>
+        <module name="ParameterName"/>
+
+        <!-- Size -->
+        <module name="MethodLength">
+            <property name="max" value="120"/>
+        </module>
+        <module name="ParameterNumber">
+            <property name="max" value="8"/>
+        </module>
+    </module>
+</module>

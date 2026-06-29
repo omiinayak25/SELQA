@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!--
+  Full regression. Runs the 'regression' group across every layer.
+  DB-dependent tests are tagged 'database' and excluded here by default.
+-->
+<suite name="OmiinQA-Regression" parallel="methods" thread-count="4" verbose="1">
+    <listeners>
+        <listener class-name="com.omiinqa.listeners.RetryTransformer"/>
+        <listener class-name="com.omiinqa.listeners.TestListener"/>
+        <listener class-name="com.omiinqa.reports.ExtentReportListener"/>
+    </listeners>
+    <test name="Regression">
+        <groups>
+            <run>
+                <include name="regression"/>
+                <include name="smoke"/>
+                <exclude name="database"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.omiinqa.unit"/>
+            <package name="com.omiinqa.api"/>
+            <package name="com.omiinqa.ui"/>
+            <package name="com.omiinqa.e2e"/>
+        </packages>
+    </test>
+</suite>

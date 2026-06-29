@@ -1,0 +1,47 @@
+# ===== Build output =====
+target/
+build/
+out/
+bin/
+*.class
+
+# ===== Maven =====
+.mvn/
+!.mvn/wrapper/maven-wrapper.properties
+
+# ===== IDE =====
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.project
+.classpath
+.factorypath
+
+# ===== Reports & results =====
+allure-results/
+allure-report/
+.allure/
+extent-reports/
+test-output/
+reports/
+screenshots/
+videos/
+logs/
+*.log
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== Secrets / local env =====
+.env
+*.local.properties
+src/test/resources/config/secrets.properties
+config/owasp/dependency-check-data/
+
+# ===== Drivers (managed by WebDriverManager) =====
+drivers/
+*.exe

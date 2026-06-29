@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!--
+  UI regression suite. Parallel by methods — each method gets its own
+  ThreadLocal WebDriver. Requires a browser (local) or Grid (remote).
+-->
+<suite name="OmiinQA-UI" parallel="methods" thread-count="3" verbose="1">
+    <listeners>
+        <listener class-name="com.omiinqa.listeners.RetryTransformer"/>
+        <listener class-name="com.omiinqa.listeners.TestListener"/>
+        <listener class-name="com.omiinqa.reports.ExtentReportListener"/>
+    </listeners>
+    <test name="UI-Tests">
+        <packages>
+            <package name="com.omiinqa.ui"/>
+        </packages>
+    </test>
+</suite>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!-- API regression suite. Hits public sandbox APIs; needs network only. -->
+<suite name="OmiinQA-API" parallel="methods" thread-count="4" verbose="1">
+    <listeners>
+        <listener class-name="com.omiinqa.listeners.RetryTransformer"/>
+        <listener class-name="com.omiinqa.listeners.TestListener"/>
+        <listener class-name="com.omiinqa.reports.ExtentReportListener"/>
+    </listeners>
+    <test name="API-Tests">
+        <packages>
+            <package name="com.omiinqa.api"/>
+        </packages>
+    </test>
+</suite>
