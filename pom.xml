@@ -42,13 +42,13 @@
         <!-- Core automation -->
         <selenium.version>4.27.0</selenium.version>
         <webdrivermanager.version>5.9.2</webdrivermanager.version>
-        <testng.version>7.10.2</testng.version>
+        <testng.version>7.12.0</testng.version>
 
         <!-- API -->
-        <rest-assured.version>5.5.0</rest-assured.version>
+        <rest-assured.version>6.0.0</rest-assured.version>
 
         <!-- BDD -->
-        <cucumber.version>7.20.1</cucumber.version>
+        <cucumber.version>7.34.4</cucumber.version>
 
         <!-- Serialization -->
         <jackson.version>2.18.2</jackson.version>
@@ -74,7 +74,7 @@
 
         <!-- Quality / utilities -->
         <lombok.version>1.18.36</lombok.version>
-        <assertj.version>3.27.0</assertj.version>
+        <assertj.version>3.27.7</assertj.version>
         <awaitility.version>4.2.2</awaitility.version>
         <axe.version>4.10.0</axe.version>
         <commons-lang3.version>3.17.0</commons-lang3.version>
