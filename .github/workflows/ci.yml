@@ -73,7 +73,9 @@ jobs:
           distribution: temurin
           java-version: "21"
           cache: maven
-      - name: Run API suite
+      - name: Run API smoke (stable, key-free endpoints — reliable gate)
+        run: mvn -B test -Dsuite.file=testng-api-smoke.xml
+      - name: Run full API suite (tolerant of external endpoint flakiness)
         run: mvn -B test -Dsuite.file=testng-api.xml
         continue-on-error: true
       - uses: actions/upload-artifact@v4

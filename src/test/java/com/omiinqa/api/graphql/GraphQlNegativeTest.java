@@ -71,9 +71,11 @@ public class GraphQlNegativeTest {
     public void malformedQuery_response_containsErrorsArray() {
         final Response response = client.query(CountriesQueries.MALFORMED_QUERY);
 
-        // GraphQL servers return 200 even for errors; some return 400 for syntax errors.
-        // Assert that the response has a non-empty errors array regardless of status.
-        ResponseValidator.of(response).statusCode(200);
+        // GraphQL returns 200 for validation errors but 400 for parse/syntax errors.
+        // The meaningful contract for a malformed query is the errors array, not the status.
+        Assertions.assertThat(response.statusCode())
+                .as("malformed query returns 200 (validation) or 400 (parse)")
+                .isIn(200, 400);
 
         final List<?> errors = response.jsonPath().getList("errors");
         Assertions.assertThat(errors)
@@ -94,7 +96,9 @@ public class GraphQlNegativeTest {
     public void malformedQuery_errorObject_hasNonBlankMessage() {
         final Response response = client.query(CountriesQueries.MALFORMED_QUERY);
 
-        ResponseValidator.of(response).statusCode(200);
+        Assertions.assertThat(response.statusCode())
+                .as("malformed query returns 200 (validation) or 400 (parse)")
+                .isIn(200, 400);
 
         final String message = response.jsonPath().getString("errors[0].message");
         Assertions.assertThat(message)
@@ -191,7 +195,10 @@ public class GraphQlNegativeTest {
     public void emptyQuery_response_containsErrors() {
         final Response response = client.query("");
 
-        ResponseValidator.of(response).statusCode(200);
+        // An empty request is rejected at the protocol level with HTTP 400.
+        Assertions.assertThat(response.statusCode())
+                .as("empty query returns 200 or 400")
+                .isIn(200, 400);
 
         final List<?> errors = response.jsonPath().getList("errors");
         Assertions.assertThat(errors)
