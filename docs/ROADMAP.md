@@ -47,9 +47,17 @@ coverage, specialized layers, synchronized docs — all compiling, smoke green, 
 
 Each wave: build → integrate → `mvn test-compile` → offline smoke → commit. Done.
 
-## v2.1+ — Reliability & scale (⏭️ later)
-Flaky detector + quarantine, Allure history/trends, test-impact selection, cloud Grid
-(LambdaTest/BrowserStack), Jira/Xray traceability sync, containerized DB in CI.
+## v2.1 — Enterprise capabilities (✅ delivered)
+Cloud Grid (BrowserStack/Sauce/LambdaTest) ✅ · Observability (metrics/Prometheus/tracing) ✅ ·
+Reporting exporters (JSON/CSV/XML/Slack/Teams/Email/GitHub-Summary) ✅ · API protocols
+(SOAP/WebSocket/SSE/multipart/OAuth2) ✅ · Self-healing locators + flaky detector + AI hook ✅ ·
+i18n ✅ · Resilience (retry/circuit-breaker/bulkhead/chaos) ✅ · Synthetic/relational data + XXE-safe XML ✅ ·
+CodeQL/gitleaks/CycloneDX SBOM/PIT mutation ✅ · GitLab CI + dependabot + release-drafter ✅.
+
+## v2.2+ — Reliability & scale (⏭️ later)
+Flaky-test quarantine automation, Allure history/trends in CI, test-impact selection,
+Jira/Xray traceability sync, containerized DB in CI, gRPC + NoSQL live clients, Pact CDC broker,
+Gatling load profiles, Lighthouse/Core-Web-Vitals via CDP.
 
 ## Definition of done (per scenario)
 Deterministic · isolated · asserted in the test (not the page) · tagged for the right suite ·

@@ -28,27 +28,30 @@
 ## Metrics (computed from source)
 | Metric | Value |
 |---|---|
-| Main source files | 170 |
-| Test source files | 78 |
-| Main lines of code | 18,240 |
-| Test lines of code | 15,122 |
-| `@Test` methods | 558 |
+| Main source files | 227 |
+| Test source files | 112 |
+| Main lines of code | 28,200 |
+| Test lines of code | 21,422 |
+| `@Test` methods | 1,004 |
 | BDD feature files / scenarios | 13 / 107 declared (151 executable) |
-| Total meaningful scenarios | 665+ |
-| TestNG suites | 9 |
-| Test-data files / JSON schemas | 6 / 7 |
-| Git-tracked files | 316 |
+| Total meaningful scenarios | 1,150+ |
+| Top-level modules | 24 |
+| TestNG suites | 11 |
+| Doc files / CI workflows | 25 / 4 |
+| Test-data files / JSON schemas | 8 / 7 |
+| Git-tracked files | 446 |
 
-## Module map — `src/main/java/com/omiinqa` (170 files)
+## Module map — `src/main/java/com/omiinqa` (227 files, 24 packages)
 | Package | Files | Package | Files | Package | Files |
 |---|---|---|---|---|---|
-| api | 52 | pages | 32 | database | 16 |
-| data | 11 | utils | 10 | components | 9 |
-| driver | 8 | exceptions | 6 | core | 3 |
+| api | 62 | pages | 32 | database | 16 |
+| reports | 14 | data | 13 | utils | 11 |
+| intelligence | 10 | components | 9 | cloud | 8 |
+| driver | 8 | exceptions | 6 | observability | 6 |
+| i18n | 4 | resilience | 4 | core | 3 |
 | enums | 3 | businessflows | 3 | listeners | 3 |
-| performance | 3 | config | 2 | reports | 2 |
-| accessibility | 2 | visual | 2 | security | 2 |
-| constants | 1 | | | | |
+| performance | 3 | config | 2 | accessibility | 2 |
+| visual | 2 | security | 2 | constants | 1 |
 
 ## Test inventory by layer
 | Layer | Tests | Suite | External need |
@@ -59,7 +62,10 @@
 | E2E | 36 | `testng-e2e.xml` | browser + network (+DB subset) |
 | Database | 88 | `testng-database.xml` | live DB |
 | Accessibility / Performance / Visual / Security / Responsive | 16 | `testng-specialized.xml` | browser / Grid |
+| Cloud / Observability / Reporting-export / API-protocols (offline) | ~130 | (by group) | none |
+| Intelligence / i18n / Resilience / Synthetic-data (offline) | ~305 | (by group) | none |
 | BDD | 151 executable (107 declared) | `testng-bdd.xml` | browser / Grid |
+| **Total `@Test`** | **1,004** | | |
 
 ## Technology stack
 Selenium 4.27 · TestNG 7.10 · WebDriverManager 5.9 · REST Assured 5.5 · Cucumber 7.20 ·

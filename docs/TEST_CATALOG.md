@@ -1,8 +1,8 @@
 # OmiinQA — Test Catalog
 
-Snapshot of automated coverage at commit `0ad0aae`. Counts are mechanical
-(`grep '@Test'` + Gherkin scenarios). **558 `@Test` methods + 151 executable BDD
-scenarios = 665+ meaningful, non-duplicate scenarios.**
+Snapshot of automated coverage at commit `4a5e39e`. Counts are mechanical
+(`grep '@Test'` + Gherkin scenarios). **1,004 `@Test` methods + 151 executable BDD
+scenarios = 1,150+ meaningful, non-duplicate scenarios.**
 
 ## Summary by layer
 | Layer | Tests | Suite | External need |
@@ -17,7 +17,15 @@ scenarios = 665+ meaningful, non-duplicate scenarios.**
 | Visual | 2 | `testng-specialized.xml` | browser / Grid |
 | Security | 4 | `testng-specialized.xml` | browser / Grid |
 | Responsive | 2 | `testng-specialized.xml` | browser / Grid |
-| **Total `@Test`** | **558** | | |
+| Cloud (capability units) | 20 | by group | none (offline) |
+| Observability | 61 | by group | none (offline) |
+| Reporting exporters | 31 | by group | none (offline) |
+| API protocols (SOAP/WS/SSE/multipart/OAuth2) | 47 | by group | 31 offline / 16 live |
+| Intelligence (self-healing/AI/flaky) | 101 | by group | none (offline) |
+| i18n | 57 | by group | none (offline) |
+| Resilience (retry/CB/bulkhead/chaos) | 45 | by group | none (offline) |
+| Synthetic data + XML reader | 76 | by group | none (offline) |
+| **Total `@Test`** | **1,004** | | |
 | BDD scenarios | 107 decl / **151 exec** | `testng-bdd.xml` | browser / Grid + network |
 
 ## API (238) — by application
