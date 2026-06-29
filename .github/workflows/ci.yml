@@ -41,7 +41,7 @@ jobs:
 
       - name: Upload Allure results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: allure-results-smoke
           path: target/allure-results
@@ -81,7 +81,7 @@ jobs:
       - name: Run full API suite (tolerant of external endpoint flakiness)
         run: mvn -B test -Dsuite.file=testng-api.xml
         continue-on-error: true
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: allure-results-api
@@ -116,7 +116,7 @@ jobs:
       - name: Tear down Grid
         if: always()
         run: docker compose -f docker/docker-compose-grid.yml down
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: allure-results-ui
@@ -163,7 +163,7 @@ jobs:
             mkdir -p allure-report
           fi
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: allure-report
           path: allure-report

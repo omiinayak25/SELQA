@@ -40,7 +40,7 @@ jobs:
       - name: Run OWASP dependency-check (fails on CVSS >= 8)
         run: mvn -B -P security verify -DskipTests
         continue-on-error: true
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: dependency-check-report
@@ -60,7 +60,7 @@ jobs:
           cache: maven
       - name: Build SBOM
         run: mvn -B -P sbom cyclonedx:makeAggregateBom -DskipTests
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: sbom
           path: target/bom.*
