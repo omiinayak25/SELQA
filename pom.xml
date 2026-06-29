@@ -51,7 +51,7 @@
         <cucumber.version>7.20.1</cucumber.version>
 
         <!-- Serialization -->
-        <jackson.version>2.18.2</jackson.version>
+        <jackson.version>2.22.0</jackson.version>
 
         <!-- Logging -->
         <log4j.version>2.24.3</log4j.version>
