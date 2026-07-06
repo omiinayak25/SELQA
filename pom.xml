@@ -80,16 +80,16 @@
         <commons-lang3.version>3.17.0</commons-lang3.version>
 
         <!-- Plugins -->
-        <compiler-plugin.version>3.13.0</compiler-plugin.version>
-        <surefire-plugin.version>3.5.2</surefire-plugin.version>
-        <failsafe-plugin.version>3.5.2</failsafe-plugin.version>
+        <compiler-plugin.version>3.15.0</compiler-plugin.version>
+        <surefire-plugin.version>3.5.6</surefire-plugin.version>
+        <failsafe-plugin.version>3.5.6</failsafe-plugin.version>
         <allure-maven.version>2.15.2</allure-maven.version>
-        <jacoco-plugin.version>0.8.12</jacoco-plugin.version>
+        <jacoco-plugin.version>0.8.15</jacoco-plugin.version>
         <checkstyle-plugin.version>3.6.0</checkstyle-plugin.version>
         <checkstyle.version>10.21.0</checkstyle.version>
-        <pmd-plugin.version>3.26.0</pmd-plugin.version>
-        <spotbugs-plugin.version>4.8.6.6</spotbugs-plugin.version>
-        <enforcer-plugin.version>3.5.0</enforcer-plugin.version>
+        <pmd-plugin.version>3.28.0</pmd-plugin.version>
+        <spotbugs-plugin.version>4.10.2.0</spotbugs-plugin.version>
+        <enforcer-plugin.version>3.6.3</enforcer-plugin.version>
         <versions-plugin.version>2.18.0</versions-plugin.version>
         <owasp-plugin.version>11.1.0</owasp-plugin.version>
 
@@ -618,7 +618,7 @@
                     <plugin>
                         <groupId>org.cyclonedx</groupId>
                         <artifactId>cyclonedx-maven-plugin</artifactId>
-                        <version>2.9.1</version>
+                        <version>2.9.2</version>
                         <configuration>
                             <projectType>application</projectType>
                             <schemaVersion>1.5</schemaVersion>
