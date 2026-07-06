@@ -83,7 +83,7 @@
         <compiler-plugin.version>3.13.0</compiler-plugin.version>
         <surefire-plugin.version>3.5.2</surefire-plugin.version>
         <failsafe-plugin.version>3.5.2</failsafe-plugin.version>
-        <allure-maven.version>2.15.2</allure-maven.version>
+        <allure-maven.version>3.0.2</allure-maven.version>
         <jacoco-plugin.version>0.8.12</jacoco-plugin.version>
         <checkstyle-plugin.version>3.6.0</checkstyle-plugin.version>
         <checkstyle.version>10.21.0</checkstyle.version>
