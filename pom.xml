@@ -70,7 +70,7 @@
         <!-- Reporting -->
         <allure.version>2.29.0</allure.version>
         <extentreports.version>5.1.2</extentreports.version>
-        <aspectj.version>1.9.22.1</aspectj.version>
+        <aspectj.version>1.9.25.1</aspectj.version>
 
         <!-- Quality / utilities -->
         <lombok.version>1.18.36</lombok.version>
