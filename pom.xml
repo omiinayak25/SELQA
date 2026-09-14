@@ -54,8 +54,8 @@
         <jackson.version>2.22.0</jackson.version>
 
         <!-- Logging -->
-        <log4j.version>2.26.0</log4j.version>
-        <slf4j.version>2.0.18</slf4j.version>
+        <log4j.version>2.26.1</log4j.version>
+        <slf4j.version>2.0.19</slf4j.version>
 
         <!-- Data / files -->
         <poi.version>5.3.0</poi.version>
